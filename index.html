@@ -186,6 +186,26 @@
                 padding: 22px;
             }
         }
+
+        /* 基本ルール画像：軽量・スマホ優先 */
+        .rule-illustration {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 12px 0 28px;
+            border-radius: 8px;
+        }
+
+        .penalty-section {
+            border-left: 5px solid #d99a00;
+        }
+
+        @media (max-width: 700px) {
+            .rule-illustration {
+                margin: 10px 0 24px;
+                border-radius: 6px;
+            }
+        }
     </style>
 </head>
 
@@ -201,6 +221,7 @@
     <div class="inner">
         <a href="#about">弾球とは</a>
         <a href="#rules">基本ルール</a>
+        <a href="#penalty">反則・一時退場</a>
         <a href="#match">試合形式</a>
         <a href="#court">コート・ゴール</a>
         <a href="#future">今後の検討</a>
@@ -255,63 +276,82 @@
         <h2>基本ルール</h2>
 
         <h3>1．ゴールにはワンバウンドが必要</h3>
-
         <div class="rule important">
             <strong>ゴールするためには、ボールが地面に一度バウンドしてから
-            ゴールの中に入らなければならない。</strong>
+            ゴールラインを越えなければなりません。</strong>
         </div>
-
         <p>
-            ボールを直接ゴールに投げ入れることはできません。
-            必ず地面に一度バウンドさせてからゴールに入れる必要があります。
+            ボールを直接ゴールに入れることはできません。
+            必ず地面に一度バウンドさせてから、2つのコーンの間に引かれた
+            ゴールラインを越える必要があります。
         </p>
-
+        <img class="rule-illustration"
+             src="images/rule1.webp"
+             alt="ボールが1回バウンドしてからゴールラインを越える図"
+             width="1200" height="110">
 
         <h3>2．ワンバウンド直後のボールはブロック・キャッチできない</h3>
-
         <div class="rule important">
             ボールが一度バウンドしてから、2回目のバウンドをするまでの間に、
             相手選手がそのシュートをブロックしたりキャッチしたりすることは反則です。
         </div>
-
+        <p>
+            ワンバウンドする前であれば、守備側の選手が手や腕などにボールを当てて
+            ブロックしたり、キャッチしたりすることができます。
+        </p>
+        <img class="rule-illustration"
+             src="images/rule2.webp"
+             alt="ワンバウンド前は守備可能、ワンバウンド後は守備できないことを示す図"
+             width="1200" height="111"
+             loading="lazy">
 
         <h3>3．2回目のバウンド以降はブロック可能</h3>
-
         <div class="rule">
             ボールが<strong>2回バウンドした後</strong>は、
             相手選手がボールをブロックしたりキャッチしたりすることができます。
         </div>
+        <img class="rule-illustration"
+             src="images/rule3.webp"
+             alt="ボールが2回バウンドした後は守備できることを示す図"
+             width="1200" height="104"
+             loading="lazy">
 
-
-        <h3>4．反則による一時退場</h3>
-
-        <div class="rule">
-            反則をした選手は、<strong>攻守が入れ替わるまで一時退場</strong>となるルールを予定しています。
-            <span class="temporary">仮</span>
-        </div>
-
-
-        <h3>5．その他の基本ルール</h3>
-
+        <h3>4．その他の基本ルール</h3>
         <p>
             ドリブル、ボールを持って歩ける歩数、相手選手との接触などについては、
             基本的にバスケットボールのルールを参考にします。
         </p>
+        <img class="rule-illustration"
+             src="images/rule4.webp"
+             alt="ドリブル、歩数、選手同士の接触を示す図"
+             width="1200" height="110"
+             loading="lazy">
 
         <div class="warning">
             ※ バスケットボールのルールをどこまで採用するかは今後詳細を決定します。
         </div>
 
-
-        <h3>6．ボール</h3>
-
+        <h3>ボール</h3>
         <p>
             使用するボールの形状・大きさ・重量は未定です。
         </p>
-
         <p>
             現在は、ドッジボール、サッカーボール、バレーボールなどに
             近い形状・大きさのボールを候補としています。
+        </p>
+    </section>
+
+
+    <section id="penalty" class="penalty-section">
+        <h2>反則による一時退場 <span class="temporary">仮</span></h2>
+
+        <div class="rule">
+            反則をした選手は、
+            <strong>攻守が入れ替わるまで一時退場</strong>となるルールを予定しています。
+        </div>
+
+        <p>
+            一時退場の対象となる反則や、復帰するタイミングの詳細は今後決定します。
         </p>
     </section>
 
@@ -538,6 +578,5 @@
     <p>弾球（仮）</p>
     <p>オリジナルスポーツ・ゲーム</p>
 </footer>
-
 </body>
 </html>
