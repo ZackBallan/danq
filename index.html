@@ -42,7 +42,32 @@ p{margin:8px 0}
 dl{margin:0}
 dt{font-weight:700;margin-top:15px}
 dd{margin:2px 0 0}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.info-card{
+  border:1px solid var(--line);border-top:3px solid var(--accent);
+  border-radius:7px;padding:15px 17px;background:#fff
+}
+.info-card h3{margin:2px 0 5px}
+.info-label{
+  display:block;font-size:10px;letter-spacing:.13em;color:var(--sub);font-weight:700
+}
+.info-value{font-size:31px;line-height:1.1;margin-right:4px}
+.goal-line{
+  display:flex;align-items:center;gap:10px;max-width:430px;margin:20px auto 18px;
+  color:var(--sub);font-size:10px;font-weight:700;letter-spacing:.12em
+}
+.goal-line::before,.goal-line::after{
+  content:"";height:3px;background:var(--accent);flex:1;border-radius:2px
+}
+.goal-dot{width:8px;height:8px;border:2px solid var(--accent);border-radius:50%;flex:0 0 8px}
+.sub-rule{display:flex;gap:13px;padding:15px 0;border-bottom:1px solid var(--line)}
+.sub-rule:last-child{border-bottom:0;padding-bottom:0}
+.sub-rule h3{margin:0 0 4px}
+.sub-rule p{margin:0}
+.sub-icon{
+  flex:0 0 29px;width:29px;height:29px;border:1px solid var(--accent);border-radius:50%;
+  display:grid;place-items:center;color:var(--accent);font-size:12px;font-weight:700;margin-top:2px
+}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th,td{border-bottom:1px solid var(--line);padding:9px 7px;text-align:left;vertical-align:top}
 th{color:var(--sub);font-weight:600}
@@ -67,7 +92,6 @@ footer{padding:26px 16px;text-align:center;color:#7a838b;font-size:13px}
 <header>
   <div class="hero">
     <h1>弾球（仮）</h1>
-    <p class="tagline">ゴールエリアのない、新しいボールゲーム。</p>
     <p class="intro">ハンドボールをベースに、攻撃側が入れないゴールエリアをなくしたスポーツです。シュートは、ゴールラインを越える前に一度バウンドさせます。</p>
   </div>
 </header>
@@ -91,8 +115,7 @@ footer{padding:26px 16px;text-align:center;color:#7a838b;font-size:13px}
 
   <div class="why">
     <h3>なぜワンバウンド？</h3>
-    <p>ゴールエリアをなくすと、ゴール直前からの直接シュートが有利になります。そこで、得点するにはボールを一度地面にバウンドさせてからゴールラインを越す必要があります。</p>
-    <p>また、バウンド後を待って守るだけにならないよう、1回目のバウンドから2回目のバウンドまでは守備側はシュートに触れません。2回目のバウンド後は再び守備できます。</p>
+    <p>ハンドボールでは、ゴール前にキーパーしか入れないエリアがあります。弾球では全ての選手が自由に動けるよう、ゴール直前からの直接シュートを防ぐ仕組みとして、ワンバウンドを得点条件にしています。</p>
   </div>
 </section>
 
@@ -106,20 +129,20 @@ footer{padding:26px 16px;text-align:center;color:#7a838b;font-size:13px}
   </div>
 
   <div class="rule">
-    <h3 class="rule-title"><span class="num">2</span>1回目のバウンド後はブロックできない</h3>
-    <p>バウンド前は守備側もボールに触れます。1回目のバウンドから次に地面に着くまでは、手や腕でシュートをブロック・キャッチできません。</p>
+    <h3 class="rule-title"><span class="num">2</span>1回目のバウンド後は守備できない</h3>
+    <p>バウンド前は守備側もボールに触れます。1回目のバウンド後は、守備側はボールをブロック・キャッチできません。</p>
     <img class="rule-illustration" src="images/rule2.webp" alt="バウンド前は守備でき、1回目のバウンド後は守備できない図" loading="lazy">
   </div>
 
   <div class="rule">
     <h3 class="rule-title"><span class="num">3</span>2回目のバウンド後は再び守備できる</h3>
-    <p>2回目に地面へ着いた後は、守備側は再びボールをブロック・キャッチできます。</p>
+    <p>攻撃側の選手が触れないまま2回目に地面へ着いた場合は、守備側も再びボールをブロック・キャッチできます。</p>
     <img class="rule-illustration" src="images/rule3.webp" alt="2回目のバウンド後は再び守備できる図" loading="lazy">
   </div>
 
   <div class="rule">
     <h3 class="rule-title"><span class="num">4</span>その他の基本ルール</h3>
-    <p>ドリブル、歩数、身体接触などは、原則としてバスケットボールのルールを参考にします。ただし、弾球独自のルールを優先します。</p>
+    <p>ドリブル、歩数、選手同士の接触などは、原則としてバスケットボールのルールを参考にします。ただし、弾球独自のルールを優先します。</p>
     <img class="rule-illustration" src="images/rule4.webp" alt="ドリブル、歩数、接触の基本ルールを示す図" loading="lazy">
   </div>
 
@@ -130,19 +153,25 @@ footer{padding:26px 16px;text-align:center;color:#7a838b;font-size:13px}
 <section id="match">
   <h2>試合形式</h2>
   <div class="grid">
-    <div>
-      <h3>人数 <span class="badge">仮</span></h3>
+    <div class="info-card">
+      <span class="info-label">PLAYERS</span>
+      <h3><span class="info-value">5</span>人 / チーム <span class="badge">仮</span></h3>
       <p>1チーム5人を基本案としています。</p>
     </div>
-    <div>
-      <h3>勝敗 <span class="badge">仮</span></h3>
-      <p>時間制限は設けず、得点によるセット制とします。何点先取・何セット制にするかは任意です（例：5点先取・3セット制）。攻撃時間にも制限はありません。</p>
+    <div class="info-card">
+      <span class="info-label">MATCH</span>
+      <h3>得点によるセット制</h3>
+      <p>何点先取・何セット制にするかは任意です。例：5点先取・3セット制。</p>
     </div>
   </div>
+  <p class="note">試合全体および攻撃時間には、原則として時間制限を設けません。</p>
 </section>
 
 <section id="court">
   <h2>コートとゴール</h2>
+
+  <div class="goal-line"><span class="goal-dot"></span><b>GOAL LINE</b><span class="goal-dot"></span></div>
+
   <dl>
     <dt>コート <span class="badge">仮</span></dt>
     <dd>バスケットボールコートと同程度の大きさを基本案としています。</dd>
@@ -154,21 +183,36 @@ footer{padding:26px 16px;text-align:center;color:#7a838b;font-size:13px}
     <dd>ゴールラインを設定できれば競技できます。専用のゴール設備は不要です。</dd>
 
     <dt>ゴール幅</dt>
-    <dd>原則として両チームの合意で決めます。合意できない場合は、試合前の抽選で第1・最終セットのゴール幅の決定権を分け、中間セットのゴール幅は直前の敗者が決めます。なお、決定したゴール幅は両チーム共通です。</dd>
+    <dd>原則として両チームの合意で決めます。合意できない場合は、コイントスまたはジャンケンの勝者が第1セットか最終セットの決定権を選び、もう一方を相手チームが決めます。それ以外のセットは、直前のセットの敗者が次のゴール幅を決めます。</dd>
   </dl>
 </section>
 
 <section id="other">
   <h2>その他のルール</h2>
 
-  <h3>反則による一時退場 <span class="badge">仮</span></h3>
-  <p>反則をした選手は、攻守が入れ替わるまで一時退場とする案です。</p>
+  <div class="sub-rule">
+    <span class="sub-icon">!</span>
+    <div>
+      <h3>反則による一時退場 <span class="badge">仮</span></h3>
+      <p>反則をした選手は、攻守が入れ替わるまで一時退場とする案です。</p>
+    </div>
+  </div>
 
-  <h3>アウト・オブ・バウンズ</h3>
-  <p>ボールがコート外に出た場合は、最後に触れたチームに関係なく守備側のボールとなります。攻撃側・守備側の判断は審判が行います。</p>
+  <div class="sub-rule">
+    <span class="sub-icon">↗</span>
+    <div>
+      <h3>アウト・オブ・バウンズ</h3>
+      <p>ボールがコート外に出た場合は、最後に触れたチームに関係なく守備側のボールとなります。攻撃側・守備側の判断は審判が行います。</p>
+    </div>
+  </div>
 
-  <h3>キック <span class="badge">仮</span></h3>
-  <p>基本案では攻撃側のキックは禁止です。両チームが合意した場合に限って認める案も検討しています。その場合、膝より高い位置のボールは蹴れず、蹴ったボールは1バウンド後でも守備側がブロックできます。</p>
+  <div class="sub-rule">
+    <span class="sub-icon">K</span>
+    <div>
+      <h3>キック <span class="badge">仮</span></h3>
+      <p>基本案では攻撃側のキックは禁止です。両チームが合意した場合に限って認める案も検討しています。その場合、膝より高い位置のボールは蹴れず、蹴ったボールは1バウンド後でも守備側がブロックできます。</p>
+    </div>
+  </div>
 </section>
 
 <section id="future">
@@ -176,12 +220,12 @@ footer{padding:26px 16px;text-align:center;color:#7a838b;font-size:13px}
   <table>
     <tr><th>項目</th><th>現在の案</th></tr>
     <tr><td>正式名称</td><td>「弾球」は仮名称</td></tr>
-    <tr><td>人数</td><td>5人</td></tr>
-    <tr><td>ボール</td><td>未定</td></tr>
-    <tr><td>ゴールの高さ</td><td>未定</td></tr>
-    <tr><td>ゴール幅</td><td>具体的な幅・決定方法を検討中</td></tr>
-    <tr><td>試合形式</td><td>5点先取・3セット制</td></tr>
-    <tr><td>反則</td><td>一時退場の詳細を検討中</td></tr>
+    <tr><td>人数</td><td>5人を基本案</td></tr>
+    <tr><td>ボール</td><td>大きさ・重量などは未定</td></tr>
+    <tr><td>コート</td><td>バスケットボールコート程度</td></tr>
+    <tr><td>ゴール幅</td><td>具体的な幅は未定</td></tr>
+    <tr><td>ワンバウンドパス</td><td>許可する案を検討中</td></tr>
+    <tr><td>反則</td><td>一時退場の対象・詳細を検討中</td></tr>
   </table>
   <p class="note">弾球は現在ルールを試作している段階です。実際のプレーを通じて変更する可能性があります。</p>
 </section>
